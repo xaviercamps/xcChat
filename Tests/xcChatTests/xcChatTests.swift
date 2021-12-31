@@ -1,11 +1,20 @@
 import XCTest
+import SwiftUI
+
 @testable import xcChat
 
 final class xcChatTests: XCTestCase {
+    
+    @State var text: String
+    
+    public init(text: String) {
+        self.text = text
+        super.init()
+    }
+    
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(xcChat().text, "Hello, World!")
+        var body: some View {
+            xcChat.MainTextField(placeholder: "Testing", text: $text)
+        }
     }
 }
